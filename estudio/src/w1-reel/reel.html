@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="size" content="1080x1920">
+<link rel="stylesheet" href="../base.css">
+<style>
+:root{--w:1080px;--h:1920px}
+.abs{position:absolute}
+#clock{font-family:"Unbounded";font-weight:600;font-size:150px;letter-spacing:-.04em;line-height:1}
+.l1{font-family:"Unbounded";font-weight:500;font-size:70px;letter-spacing:-.03em;line-height:1.1}
+.msg{font-size:36px;max-width:84%}
+.typing{background:#fff;align-self:flex-start;border-radius:22px;border-top-left-radius:8px;padding:22px 26px;display:flex;gap:10px}
+.typing i{width:14px;height:14px;border-radius:50%;background:var(--pizarra);opacity:.35;display:block}
+#card{background:#fff;border-radius:26px;padding:28px 32px;display:flex;align-items:center;gap:26px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.badge{background:var(--salvia-2);color:var(--petroleo);font-weight:600;font-size:26px;padding:10px 20px;border-radius:30px}
+.lines{position:absolute;inset:0;opacity:.18}
+</style></head><body>
+<div class="canvas dark" id="root">
+  <!-- líneas decorativas (eco del hero del sitio) -->
+  <svg class="lines" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+    <g fill="none" stroke-width="2">
+      <path d="M1080 120 C 800 600, 700 1100, 260 1920" stroke="#C0D8D1"/>
+      <path d="M1080 260 C 840 700, 760 1200, 360 1920" stroke="#0C7489"/>
+      <path d="M1080 40 C 760 520, 640 1000, 160 1920" stroke="#F9912C"/>
+      <path d="M1080 380 C 900 800, 820 1300, 470 1920" stroke="#C0D8D1"/>
+    </g>
+  </svg>
+
+  <!-- Escena 1 -->
+  <div id="s1" class="abs" style="left:90px;right:90px;top:620px">
+    <div id="e1" class="eyebrow">Hoy, en tu negocio</div>
+    <div id="clock" style="margin-top:30px">10:47&nbsp;p.&nbsp;m.</div>
+    <div id="t1" class="l1" style="margin-top:56px">Tu negocio ya cerró.</div>
+    <div id="t2" class="l1" style="margin-top:14px;color:var(--naranja);font-weight:700">Tus clientes, no.</div>
+  </div>
+
+  <!-- Escena 2 -->
+  <div id="s2" class="abs" style="left:80px;right:80px;top:380px">
+    <div id="tag" style="display:flex;align-items:center;gap:16px;margin-bottom:34px">
+      <span class="badge" style="background:var(--naranja);color:var(--pizarra)">10:47 p. m.</span>
+      <span style="font-size:30px;color:var(--salvia)">Fuera de horario</span>
+    </div>
+    <div id="phone" class="phone">
+      <div class="chat-head"><div class="avatar" style="width:68px;height:68px;font-size:26px">TN</div><div><div class="chat-title" style="font-size:31px">Tu negocio · WhatsApp</div><div class="chat-sub" style="font-size:23px">Atendido por Citara</div></div></div>
+      <div class="chat-body" style="height:700px;gap:22px;padding:34px 28px">
+        <div id="m1" class="msg out">Hola, ¿tienen cita mañana en la mañana?</div>
+        <div id="ty1" class="typing"><i></i><i></i><i></i></div>
+        <div id="m2" class="msg in">¡Hola! Mañana tengo <b>9:00&nbsp;a.&nbsp;m.</b> o <b>11:30&nbsp;a.&nbsp;m.</b> ¿Cuál te sirve?</div>
+        <div id="m3" class="msg out">La de las 9, porfa 🙌</div>
+        <div id="ty2" class="typing"><i></i><i></i><i></i></div>
+        <div id="m4" class="msg in">Listo. Tu cita quedó agendada para mañana a las <b>9:00&nbsp;a.&nbsp;m.</b></div>
+      </div>
+    </div>
+    <div id="card" style="margin-top:-40px;margin-left:120px;margin-right:-20px;position:relative">
+      <div style="width:76px;height:76px;border-radius:50%;background:var(--petroleo);display:grid;place-items:center;flex:none">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FBFEF9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <div style="flex:1;color:var(--pizarra)">
+        <div style="font-size:22px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.55">En tu agenda</div>
+        <div style="font-size:34px;font-weight:600;margin-top:4px">Mañana · 9:00 a. m.</div>
+      </div>
+      <span class="badge">Agendada</span>
+    </div>
+  </div>
+
+  <!-- Escena 3 -->
+  <div id="s3" class="abs" style="left:90px;right:90px;top:560px">
+    <img src="../../assets/citara-oscuro.svg" style="width:330px;display:block">
+    <div class="h1" style="font-size:80px;margin-top:90px">Tu negocio cierra.<br>Tu agenda <b>sigue.</b></div>
+    <div class="body" style="margin-top:50px;color:var(--salvia);font-size:40px">Citara responde por WhatsApp<br>a cualquier hora.</div>
+    <div style="margin-top:70px;display:flex;flex-direction:column;gap:26px;align-items:flex-start">
+      <span class="pill" style="font-size:36px;padding:24px 40px">Prueba gratis 7 días →</span>
+      <span class="url" style="font-size:34px">citara.com.co</span>
+    </div>
+  </div>
+
+  <div id="note" class="note abs" style="left:90px;bottom:300px;font-size:24px;color:var(--salvia)">Vista ilustrativa · datos de ejemplo</div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const inn = (t,start,dur=.45)=>ease((t-start)/dur);
+function show(el, p, dy=40, scale=false){
+  el.style.opacity = p;
+  el.style.transform = `translateY(${(1-p)*dy}px)` + (scale ? ` scale(${0.92+0.08*p})` : '');
+}
+function disp(el, on){ el.style.display = on ? '' : 'none'; }
+function dotsAnim(el, t){ [...el.children].forEach((d,i)=>{ d.style.opacity = .25 + .5*Math.max(0,Math.sin((t*7)-i*0.9)); }); }
+
+window.setT = function(t){
+  // Escena 1: 0 – 3.2
+  const out1 = 1 - inn(t, 3.0, .4);
+  $('s1').style.opacity = out1; $('s1').style.transform = `translateY(${-(1-out1)*80}px)`;
+  show($('e1'), inn(t,.15)); show($('clock'), inn(t,.3,.6), 60);
+  show($('t1'), inn(t,1.1)); show($('t2'), inn(t,2.0));
+
+  // Escena 2: 3.2 – 12
+  const in2 = inn(t,3.2,.6), out2 = 1 - inn(t,12.0,.45);
+  $('s2').style.opacity = Math.min(in2,out2);
+  $('s2').style.transform = `translateY(${(1-in2)*160}px)`;
+  show($('m1'), inn(t,3.9,.35), 24, true);
+  disp($('ty1'), t>=4.7 && t<5.9); dotsAnim($('ty1'), t);
+  disp($('m2'), t>=5.9); show($('m2'), inn(t,5.9,.35), 24, true);
+  disp($('m3'), t>=7.5); show($('m3'), inn(t,7.5,.35), 24, true);
+  disp($('ty2'), t>=8.2 && t<9.2); dotsAnim($('ty2'), t);
+  disp($('m4'), t>=9.2); show($('m4'), inn(t,9.2,.35), 24, true);
+  show($('card'), inn(t,10.1,.5), 60, true);
+
+  // Escena 3: 12.3 – 16
+  const in3 = inn(t,12.4,.6);
+  $('s3').style.opacity = in3; $('s3').style.transform = `translateY(${(1-in3)*60}px)`;
+  $('note').style.opacity = t < 12.2 ? Math.min(inn(t,3.5), 1) * .85 : .85;
+};
+setT(0);
+</script>
+</body></html>

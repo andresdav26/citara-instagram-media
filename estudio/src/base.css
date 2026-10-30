@@ -1,0 +1,79 @@
+@font-face { font-family: "Unbounded"; src: url("../assets/unbounded.woff2") format("woff2"); font-weight: 400 700; }
+@font-face { font-family: "Jost"; src: url("../assets/jost.woff2") format("woff2"); font-weight: 400 700; }
+
+:root {
+  --naranja: #F9912C;
+  --bv: #FBFEF9;
+  --salvia: #C0D8D1;
+  --salvia-2: #E2EDE9;
+  --salvia-3: #EEF5F2;
+  --petroleo: #0C7489;
+  --pizarra: #2E4052;
+  --pizarra-2: #3A4E62;
+  --logo: #021B3A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: var(--w); height: var(--h); }
+body {
+  font-family: "Jost", sans-serif;
+  color: var(--pizarra);
+  background: var(--bv);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.canvas { position: relative; width: var(--w); height: var(--h); overflow: hidden; }
+.dark { background: var(--pizarra); color: var(--bv); }
+.teal { background: var(--petroleo); color: var(--bv); }
+.sage { background: var(--salvia-2); }
+
+.eyebrow {
+  font-family: "Jost"; font-weight: 600; font-size: 26px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--petroleo);
+}
+.dark .eyebrow { color: var(--salvia); }
+.h1 {
+  font-family: "Unbounded"; font-weight: 500; letter-spacing: -0.035em; line-height: 1.04;
+}
+.h1 b { font-weight: 700; color: var(--petroleo); }
+.dark .h1 b { color: var(--naranja); }
+.teal .h1 b { color: var(--naranja); }
+.body { font-family: "Jost"; font-weight: 400; font-size: 36px; line-height: 1.35; }
+
+.logo { display: block; }
+.pill {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--naranja); color: var(--pizarra);
+  font-family: "Jost"; font-weight: 600; font-size: 30px;
+  padding: 20px 34px; border-radius: 14px;
+}
+.url { font-family: "Jost"; font-weight: 600; font-size: 28px; }
+.note { font-family: "Jost"; font-size: 20px; opacity: .7; }
+
+/* Chat UI */
+.phone {
+  background: #fff; border-radius: 34px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(46,64,82,.18), 0 2px 0 rgba(46,64,82,.04);
+  border: 1px solid rgba(46,64,82,.08);
+}
+.dark .phone { box-shadow: 0 30px 90px rgba(0,0,0,.35); border: none; }
+.chat-head {
+  display: flex; align-items: center; gap: 18px; padding: 24px 28px;
+  background: #F6FAF8; border-bottom: 1px solid rgba(46,64,82,.08); color: var(--pizarra);
+}
+.avatar {
+  width: 58px; height: 58px; border-radius: 50%; background: var(--salvia);
+  display: grid; place-items: center; font-weight: 700; font-size: 22px; color: var(--pizarra);
+}
+.chat-title { font-weight: 600; font-size: 26px; line-height: 1.1; }
+.chat-sub { font-size: 19px; opacity: .65; margin-top: 4px; }
+.chat-body { background: var(--salvia-2); padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+.msg {
+  max-width: 80%; padding: 18px 24px; border-radius: 22px; font-size: 27px; line-height: 1.3; color: var(--pizarra);
+  box-shadow: 0 1px 0 rgba(46,64,82,.06);
+}
+.msg.in { background: #fff; align-self: flex-start; border-top-left-radius: 8px; }
+.msg.out { background: var(--salvia); align-self: flex-end; border-top-right-radius: 8px; }
+.msg b { color: var(--petroleo); font-weight: 600; }
+.time { display: block; font-size: 17px; opacity: .55; text-align: right; margin-top: 6px; }
