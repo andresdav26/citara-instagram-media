@@ -69,7 +69,7 @@ page("w1-foto", "silla-vacia", f"""
   <div class="body" style="position:absolute;left:90px;right:90px;top:478px;font-size:32px;opacity:.85">Citara recuerda cada cita un día antes y, si alguien cancela, el espacio vuelve a tu agenda.</div>
 </div>
 <div style="position:absolute;left:0;right:0;top:640px;bottom:0;{photo_css}">
-  {'' if photo else '<div style="position:absolute;inset:0;display:grid;place-items:center;font-family:Unbounded;font-size:44px;color:var(--pizarra);opacity:.6">FOTO 16:9</div>'}
+  {'<div style="position:absolute;left:0;right:0;bottom:0;height:260px;background:linear-gradient(to top,rgba(46,64,82,.55),rgba(46,64,82,0))"></div>' if photo else '<div style="position:absolute;inset:0;display:grid;place-items:center;font-family:Unbounded;font-size:44px;color:var(--pizarra);opacity:.6">FOTO 16:9</div>'}
 </div>
 <div style="position:absolute;left:90px;right:90px;bottom:80px;display:flex;justify-content:space-between;align-items:center">
   <span class="pill" style="background:var(--petroleo);color:var(--bv);border-radius:40px;padding:16px 32px;font-size:28px">Conoce Citara</span>
