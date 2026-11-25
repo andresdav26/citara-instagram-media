@@ -1,0 +1,80 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="size" content="1080x1920">
+<link rel="stylesheet" href="../base.css">
+<style>
+:root{--w:1080px;--h:1920px}
+.abs{position:absolute}
+.msg{font-size:36px;max-width:84%}
+.typing{background:#fff;align-self:flex-start;border-radius:22px;border-top-left-radius:8px;padding:22px 26px;display:flex;gap:10px}
+.typing i{width:14px;height:14px;border-radius:50%;background:var(--pizarra);opacity:.35;display:block}
+.badge{background:var(--salvia-2);color:var(--petroleo);font-weight:600;font-size:26px;padding:10px 20px;border-radius:30px}
+#card{background:#fff;border-radius:26px;padding:26px 30px;box-shadow:0 30px 80px rgba(0,0,0,.35);color:var(--pizarra)}
+.lines{position:absolute;inset:0;opacity:.18}
+</style></head><body>
+<div class="canvas dark">
+  <svg class="lines" viewBox="0 0 1080 1920" preserveAspectRatio="none"><g fill="none" stroke-width="2">
+    <path d="M1080 120 C 800 600, 700 1100, 260 1920" stroke="#C0D8D1"/><path d="M1080 260 C 840 700, 760 1200, 360 1920" stroke="#0C7489"/>
+    <path d="M1080 40 C 760 520, 640 1000, 160 1920" stroke="#F9912C"/></g></svg>
+
+  <div id="s1" class="abs" style="left:80px;right:80px;top:250px">
+    <div id="hook" style="font-family:Unbounded;font-weight:700;font-size:74px;letter-spacing:-.035em;line-height:1.05">“¿Me cambias<br>la cita?”</div>
+    <div id="sub" style="font-size:36px;color:var(--salvia);margin-top:22px">Se resuelve en el mismo chat. <span style="color:var(--naranja);font-weight:600">Sin que tu equipo pare.</span></div>
+    <div id="phone" class="phone" style="margin-top:46px">
+      <div class="chat-head"><div class="avatar" style="width:64px;height:64px;font-size:24px">TN</div><div><div class="chat-title" style="font-size:30px">Tu negocio · WhatsApp</div><div class="chat-sub" style="font-size:22px">Atendido por Citara</div></div></div>
+      <div id="body" class="chat-body" style="height:760px;gap:20px;padding:30px 26px;justify-content:flex-end;overflow:hidden">
+        <div id="m1" class="msg out">Hola, ¿me puedes cambiar la cita de mañana? 🙏</div>
+        <div id="ty1" class="typing"><i></i><i></i><i></i></div>
+        <div id="m2" class="msg in">¡Claro! ¿Para qué día la quieres?</div>
+        <div id="m3" class="msg out">El viernes en la tarde</div>
+        <div id="ty2" class="typing"><i></i><i></i><i></i></div>
+        <div id="m4" class="msg in">El viernes tengo <b>3:00&nbsp;p.&nbsp;m.</b> o <b>5:30&nbsp;p.&nbsp;m.</b> ¿Cuál te sirve?</div>
+        <div id="m5" class="msg out">5:30 👌</div>
+        <div id="ty3" class="typing"><i></i><i></i><i></i></div>
+        <div id="m6" class="msg in">Listo. Tu cita quedó para el viernes a las <b>5:30&nbsp;p.&nbsp;m.</b></div>
+      </div>
+    </div>
+    <div id="card" style="margin:22px 0 0 110px;position:relative">
+      <div style="font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.55">En tu agenda</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <div style="font-size:32px;font-weight:600">Viernes · 5:30 p. m.</div><span class="badge">Agendada</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;opacity:.6">
+        <div style="font-size:27px;text-decoration:line-through">Mañana · 4:00 p. m.</div><span style="font-size:24px;font-weight:600">Espacio libre</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="s2" class="abs" style="left:90px;right:90px;top:600px">
+    <img src="../../assets/citara-oscuro.svg" style="width:320px;display:block">
+    <div class="h1" style="font-size:84px;margin-top:80px">Tus clientes reprograman.<br>Tu equipo <b>sigue atendiendo.</b></div>
+    <div style="margin-top:70px;display:flex;flex-direction:column;gap:26px;align-items:flex-start">
+      <span class="pill" style="font-size:36px;padding:24px 40px">Prueba gratis 7 días →</span>
+      <span class="url" style="font-size:34px">citara.com.co</span>
+    </div>
+  </div>
+  <div id="note" class="note abs" style="left:90px;bottom:236px;font-size:24px;color:var(--salvia)">Vista ilustrativa · datos de ejemplo</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const inn=(t,s,d=.3)=>ease((t-s)/d);
+function pop(el,t,s){el.style.display=t>=s?'':'none';const p=inn(t,s);el.style.opacity=p;el.style.transform=`translateY(${(1-p)*20}px) scale(${.94+.06*p})`;}
+function typing(el,t,a,b){el.style.display=(t>=a&&t<b)?'flex':'none';[...el.children].forEach((d,i)=>d.style.opacity=.25+.5*Math.max(0,Math.sin(t*8-i*.9)));}
+window.setT=function(t){
+  // Escena 1: 0 – 9.2 s. El gancho está visible desde el primer cuadro.
+  const out1=1-inn(t,9.2,.4);
+  $('s1').style.opacity=out1; $('s1').style.transform=`translateY(${-(1-out1)*60}px)`;
+  const ps=inn(t,.5); $('sub').style.opacity=ps; $('sub').style.transform=`translateY(${(1-ps)*16}px)`;
+  pop($('m1'),t,.15);
+  typing($('ty1'),t,1.1,1.8); pop($('m2'),t,1.8);
+  pop($('m3'),t,2.9);
+  typing($('ty2'),t,3.5,4.2); pop($('m4'),t,4.2);
+  pop($('m5'),t,5.5);
+  typing($('ty3'),t,6.0,6.6); pop($('m6'),t,6.6);
+  const pc=inn(t,7.4,.45); $('card').style.opacity=pc; $('card').style.transform=`translateY(${(1-pc)*50}px) scale(${.94+.06*pc})`;
+  // Escena 2: 9.5 – 12 s
+  const in2=inn(t,9.5,.5); $('s2').style.opacity=in2; $('s2').style.transform=`translateY(${(1-in2)*50}px)`;
+};
+setT(0);
+</script>
+</body></html>
